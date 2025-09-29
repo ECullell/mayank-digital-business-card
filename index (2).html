@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enric Cullell - Digital Business Card</title>
+    <meta name="description" content="Enric Cullell, Validation Lead at USDM Life Sciences. Expert in GxP compliance, digital quality, and regulatory solutions for life sciences.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 50%, #4a90a4 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .business-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            max-width: 420px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #1e3a5f, #4a90a4);
+        }
+
+        .profile-image {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: block;
+            object-fit: cover;
+            border: 4px solid #4a90a4;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .company-logo {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 70px;  /* Adjust this to make it smaller/larger */
+            height: auto;
+            object-fit: cover;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 18px;
+            color: #4a90a4;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .company {
+            font-size: 20px;
+            color: #1e3a5f;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .bio {
+            font-size: 15px;
+            color: #5a6c7d;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+
+        .contact-info {
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            font-size: 15px;
+            color: #2c5282;
+        }
+
+        .contact-item svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            fill: #4a90a4;
+        }
+
+        .contact-item a {
+            color: #1e3a5f;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: #4a90a4;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-link svg {
+            width: 22px;
+            height: 22px;
+            fill: #5a6c7d;
+        }
+
+        .linkedin:hover { 
+            background: #0077b5; 
+            border-color: #0077b5; 
+        }
+        .linkedin:hover svg { fill: white; }
+
+        .website:hover { 
+            background: #1e3a5f; 
+            border-color: #1e3a5f; 
+        }
+        .website:hover svg { fill: white; }
+
+        .email:hover { 
+            background: #4a90a4; 
+            border-color: #4a90a4; 
+        }
+        .email:hover svg { fill: white; }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e3a5f, #4a90a4);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30, 58, 95, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e3a5f;
+            border: 2px solid #1e3a5f;
+        }
+
+        .btn-secondary:hover {
+            background: #1e3a5f;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .specialty-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4a90a4, #1e3a5f);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .specialties {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .business-card {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+            
+            .name {
+                font-size: 26px;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .usdm-accent {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            opacity: 0.1;
+            font-size: 10px;
+            color: #1e3a5f;
+            font-weight: bold;
+        }
+        .contact-form { 
+          margin-top: 28px; 
+          text-align: left; 
+        }
+        .form-title { 
+          color:#1e3a5f; 
+          font-size:20px; 
+          font-weight:700; 
+          margin-bottom:14px; 
+          text-align:center; 
+        }
+        .form-row { 
+          display:flex; 
+          flex-direction:column; 
+          margin-bottom:12px; 
+        }
+        .form-row label { 
+          font-size:13px; 
+          color:#375a7a; 
+          margin-bottom:6px; 
+        }
+        .form-row input, .form-row textarea {
+          border:1px solid #e2e8f0;
+          border-radius:10px;
+          padding:12px;
+          font-size:14px;
+          outline:none;
+        }
+        .form-row input:focus, .form-row textarea:focus { 
+          border-color:#4a90a4; 
+          box-shadow:0 0 0 3px rgba(74,144,164,.15);
+        }
+        .form-row.checkbox { 
+          flex-direction:row; 
+          align-items:flex-start; 
+          gap:8px; 
+        }
+        .form-status { 
+          margin-top:10px; 
+          font-size:14px; 
+        }
+        .form-status.ok { color:#0a7f3f; }
+        .form-status.err { color:#b00020; }
+        .privacy-note { 
+          display:block; 
+          margin-top:8px; 
+          color:#5a6c7d; 
+        }
+        /* Toggle form inside the card */
+        #contact-form { 
+          display: none; 
+        }
+        #contact-form.show { 
+          display: block; 
+          animation: fadeIn 0.25s ease-in;
+        }
+        
+        /* make the submit button full-width on small screens */
+        @media (max-width: 480px) {
+          #contact-form .btn { width: 100%; }
+        }
+        /* keep the form constrained inside the card */
+        .contact-form { 
+          margin-top: 28px; 
+          text-align: left; 
+          max-width: 100%;
+        }
+        
+        /* make fields never overflow the card */
+        .form-row input,
+        .form-row textarea {
+          width: 100%;
+          max-width: 100%;
+          display: block;
+        }
+        /* fallback: stack children vertically */
+        body {
+          display: flex;
+          flex-direction: column;   /* add this */
+          gap: 24px;
+          justify-content: center;
+          align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card fade-in">
+        <img class="company-logo" src="./USDM Logo-Primary.jpeg" alt="USDM Life Sciences" loading="eager">
+
+        <!-- Profile Image -->
+        <img class="profile-image" src="./profile.jpeg" alt="Enric Cullell" loading="eager">
+        
+        <!-- Name and Title -->
+        <h1 class="name">Enric Cullell</h1>
+        <p class="title">AI Quality Lead</p>
+        <p class="company">USDM Life Sciences</p>
+
+        <!-- Bio -->
+        <p class="bio">
+            I help life sciences companies harness the power of AI and digital innovation to navigate regulatory complexity with confidence. <br> 
+            At USDM, I combine deep expertise in GxP compliance, digital quality, and risk management with cutting-edge AI strategies that transform how pharmaceutical, biotech, and medical device organizations achieve operational excellence. <br>
+            Curious about how AI can reshape compliance and quality in life sciences? Let’s connect—I’d love to show you what’s possible.
+            
+        </p>
+
+        <!-- Specialties -->
+        <div class="specialties">
+            <a href="https://usdm.com/capabilities/data/genai-ml-enablement" class="specialty-badge" target="_blank">GenAI & ML enablement</a>
+            <a href="https://gxp-experts.usdm.com/ai-assurance-datasheet" class="specialty-badge" target="_blank">AI Assurance Datasheet</a>
+            <a href="https://usdm.com/expertise/industries/medical-device" class="specialty-badge" target="_blank">Solutions for MedDev Manufacturers</a>
+            <a href="https://gxp-experts.usdm.com/medical-device-manufacturers-solution-sheet" class="specialty-badge" target="_blank">MedDev Solution sheet</a>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                </svg>
+                <a href="tel:+4969506027946">+49 69 506027946</a>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                </svg>
+                <a href="mailto:ecullell@usdm.com">ecullell@usdm.com</a>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16.36,14C16.44,13.3 16.5,12.61 16.5,12S16.44,10.7 16.36,10H19.74C19.9,10.64 20,11.31 20,12S19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.32 9.5,12.66 9.5,12S9.56,10.68 9.66,10H14.34C14.43,10.68 14.5,11.32 14.5,12S14.43,13.32 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12S4.1,10.64 4.26,10H7.64C7.56,10.7 7.5,11.3 7.5,12S7.56,13.29 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                </svg>
+                <a href="https://usdm.com/" target="_blank">usdm.com</a>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <a href="https://www.linkedin.com/in/enric-cullell" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <!-- <div class="social-links">
+            <a href="https://www.linkedin.com/in/enric-cullell" target="_blank" class="social-link linkedin">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+            <a href="https://usdm.com/" target="_blank" class="social-link website">
+                <svg viewBox="0 0 24 24">
+                    <path d="M16.36,14C16.44,13.3 16.5,12.61 16.5,12S16.44,10.7 16.36,10H19.74C19.9,10.64 20,11.31 20,12S19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.32 9.5,12.66 9.5,12S9.56,10.68 9.66,10H14.34C14.43,10.68 14.5,11.32 14.5,12S14.43,13.32 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12S4.1,10.64 4.26,10H7.64C7.56,10.7 7.5,11.3 7.5,12S7.56,13.29 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                </svg>
+            </a>
+            <a href="mailto:ecullell@usdm.com" class="social-link email">
+                <svg viewBox="0 0 24 24">
+                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                </svg>
+            </a>
+        </div> -->
+
+        <!-- Action Buttons -->
+        <div class="actions">
+            <a href="#" class="btn btn-primary" id="showForm">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12,2A10,10 0 1,0 22,12A10,10 0 0,0 12,2M11,17L6,12L7.41,10.59L11,14.17L16.59,8.58L18,10L11,17Z"/>
+                </svg>
+                Contact Me
+            </a>
+            <a href="#" class="btn btn-primary" id="addContact">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"/>
+                </svg>
+                Add To Contacts
+            </a>
+            <a href="tel:+4969506027946" class="btn btn-secondary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                </svg>
+                Call Now
+            </a>
+        </div>
+
+        <form id="contact-form" class="contact-form" action="https://formsubmit.co/ecullell@usdm.com" method="POST" novalidate>
+          <h2 class="form-title">Get in touch</h2>
+        
+          <!-- Honeypot (spam trap) -->
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+        
+          <div class="form-row">
+            <label for="name">Name *</label>
+            <input id="name" name="name" type="text" required autocomplete="name" />
+          </div>
+        
+          <div class="form-row">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+        
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+          </div>
+        
+          <div class="form-row">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" autocomplete="organization" />
+          </div>
+        
+          <div class="form-row">
+            <label for="question">Question *</label>
+            <textarea id="question" name="question" rows="4" required></textarea>
+          </div>
+        
+          <div class="form-row checkbox">
+            <label>
+              <input type="checkbox" id="consent" name="consent" required />
+              I consent to you storing and using my information to contact me about my inquiry.
+            </label>
+          </div>
+        
+          <!-- Optional metadata -->
+          <input type="hidden" name="_subject" value="New inquiry from your digital business card" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="hidden" name="_next" value="https://YOURDOMAIN/thank-you.html" />
+          <!-- Nice email layout -->
+          <input type="hidden" name="_template" value="table" />
+        
+          <button class="btn btn-primary" type="submit">Send message</button>
+        
+          <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+        
+          <small class="privacy-note">
+            By submitting, you agree to the processing of your personal data for the purpose of responding to your inquiry.
+          </small>
+        </form>
+        <div class="usdm-accent">USDM Life Sciences</div>
+    </div>
+
+    
+    <script>
+        // Add to contacts functionality
+        document.getElementById('addContact').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create vCard data
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+X-ABShowAs:PERSON
+N:Cullell;Enric;;;
+FN:Enric Cullell
+ORG:USDM Life Sciences
+TITLE:AI Quality Lead
+TEL;TYPE=CELL,VOICE:+4969506027946
+EMAIL;TYPE=INTERNET,PREF:ecullell@usdm.com
+URL;TYPE=WORK:https://usdm.com/
+URL;TYPE=HOME:https://www.linkedin.com/in/enric-cullell
+NOTE:GxP Compliance, Digital Quality, and Risk Management expert for life sciences companies. Specializes in pharmaceutical, biotech, and medical device validation.
+END:VCARD`;
+
+            // Create and download vCard file
+            const blob = new Blob([vCard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'enric-cullell-usdm.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        });
+
+        // Simple analytics tracking
+        console.log('Enric Cullell - USDM Digital Business Card viewed at:', new Date());
+        
+        // Optional: Track click events
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                console.log('Link clicked:', this.href);
+            });
+        });
+    </script>
+    <script>
+      // Toggle contact form inside the card
+      (function () {
+        const toggleBtn = document.getElementById('showForm');
+        const form = document.getElementById('contact-form');
+    
+        if (!toggleBtn || !form) return;
+    
+        // a11y: reflect state on the button
+        toggleBtn.setAttribute('aria-expanded', 'false');
+    
+        toggleBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          const isOpen = form.classList.toggle('show');
+          toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    
+          if (isOpen) {
+            // focus first input & scroll into view
+            const first = form.querySelector('input, textarea, select');
+            first && first.focus({ preventScroll: true });
+            form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        const form = document.getElementById('contact-form');
+        if (!form) return;
+        const status = document.getElementById('form-status');
+    
+        function setStatus(msg, ok=true) {
+          status.textContent = msg;
+          status.className = 'form-status ' + (ok ? 'ok' : 'err');
+        }
+    
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+    
+          // Basic front-end validation
+          const required = ['name','email','question','consent'];
+          for (const id of required) {
+            const el = document.getElementById(id);
+            if (!el || (el.type === 'checkbox' ? !el.checked : !el.value.trim())) {
+              setStatus('Please complete all required fields (*).', false);
+              el && el.focus();
+              return;
+            }
+          }
+    
+          const formData = new FormData(form);
+    
+          try {
+            const res = await fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              headers: { 'Accept': 'application/json' }
+            });
+    
+            if (res.ok) {
+              setStatus('Thanks! Your message has been sent.');
+              form.reset();
+            } else {
+              const data = await res.json().catch(() => ({}));
+              setStatus(data.error || 'Oops—something went wrong. Please try again.', false);
+            }
+          } catch (err) {
+            setStatus('Network error. Please try again.', false);
+          }
+        });
+      })();
+    </script>
+</body>
+</html>
